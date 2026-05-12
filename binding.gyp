@@ -161,7 +161,7 @@
             '-fno-objc-arc',
           ],
           'xcode_settings': {
-            'IPHONEOS_DEPLOYMENT_TARGET': '13.0',
+            'IPHONEOS_DEPLOYMENT_TARGET': '11.0',
             'TARGETED_DEVICE_FAMILY': '1,2',
             'CLANG_ENABLE_MODULES': 'YES',
             'OTHER_LDFLAGS': [
