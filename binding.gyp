@@ -159,13 +159,17 @@
           ],
           'cflags_cc': [
             '-fno-objc-arc',
+            '-stdlib=libc++',
           ],
           'xcode_settings': {
             'IPHONEOS_DEPLOYMENT_TARGET': '11.0',
             'TARGETED_DEVICE_FAMILY': '1,2',
             'CLANG_ENABLE_MODULES': 'YES',
+            'CLANG_CXX_LIBRARY': 'libc++',
             'OTHER_LDFLAGS': [
               '-allow_stack_execution',
+              '-lc++',
+              '-lc++abi',
             ],
           },
           'dependencies': [
