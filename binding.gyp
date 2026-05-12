@@ -68,7 +68,7 @@
             # http://www.gnu.org/software/gnulib/manual/html_node/forkpty.html
             #   One some systems (at least including Cygwin, Interix,
             #   OSF/1 4 and 5, and Mac OS X) linking with -lutil is not required.
-            ['OS=="mac" or OS=="solaris"', {
+            ['OS=="mac" or OS=="ios" or OS=="solaris"', {
               'libraries!': [
                 '-lutil'
               ]
@@ -143,6 +143,34 @@
           "xcode_settings": {
             "MACOSX_DEPLOYMENT_TARGET":"10.7"
           }
+        },
+      ]
+    }],
+    ['OS=="ios"', {
+      'targets': [
+        {
+          'target_name': 'pty',
+          'sources': [
+            'src/unix/pty.cc',
+          ],
+          'cflags': [
+            '-Wall',
+            '-fno-objc-arc',
+          ],
+          'cflags_cc': [
+            '-fno-objc-arc',
+          ],
+          'xcode_settings': {
+            'IPHONEOS_DEPLOYMENT_TARGET': '13.0',
+            'TARGETED_DEVICE_FAMILY': '1,2',
+            'CLANG_ENABLE_MODULES': 'YES',
+            'OTHER_LDFLAGS': [
+              '-allow_stack_execution',
+            ],
+          },
+          'dependencies': [
+            '<!@(node -p "require(\'node-addon-api\').targets"):node_addon_api_except',
+          ],
         },
       ]
     }]
